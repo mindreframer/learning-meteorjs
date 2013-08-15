@@ -1,0 +1,45 @@
+<head>
+  <title>accounts</title>
+</head>
+
+<body>
+  {{! loginButtons }}
+  {{> login}}
+</body>
+
+<template name="login">
+  <h1>Login</h1>
+  {{#if currentUser}}
+    <h2>Logged in as {{currentUser.username}}</h2>
+    <p><button id='logout'>Log Out</button></p>
+  {{else}}
+    {{#if loggingIn}}
+      <p>Logging In... </p>
+
+    {{ else }}
+      {{#if creatingAccount }}
+        {{> newAccountForm}}
+      {{ else }}
+        {{> loginForm }}
+      {{/if }}
+    {{/if }}
+  {{/if}}
+</template>
+
+
+
+<template name="newAccountForm">
+  <input type="text" id="email" placeholder="email">
+  <input type="text" id="name" placeholder="name">
+  <input type="text" id="username" placeholder="username">
+  <input type="password" id="password" placeholder="password">
+  <button id="createaccount"> Create </button>
+  <p id="loginform">( Login) </p>
+</template>
+
+<template name="loginForm">
+  <input type="text" id="username" placeholder="username">
+  <input type="password" id="password" placeholder="password">
+  <button id='login'> Log In </button>
+  <p id="accountform">( Create ) </p>
+</template>
