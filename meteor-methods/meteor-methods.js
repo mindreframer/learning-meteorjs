@@ -7,10 +7,12 @@ if (Meteor.isClient) {
   }
 }
 
-if (Meteor.isServer){
-  Meteor.methods({
-    createItem: function(text){
-      Items.insert({text: text})
+Meteor.methods({
+  createItem: function(text){
+    if(this.isSimulation){
+      console.log("sending ", text, " to the server")
+    } else{
+      return Items.insert({text: text})
     }
-  })
-}
+  }
+})
