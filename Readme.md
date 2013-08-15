@@ -52,5 +52,17 @@
 
 
 
+## Accounts
+  # https://tutsplus.com/lesson/the-meteor-account-system/
+  - meteor add accounts-base
+  - meteor add accounts-password
+  - meteor add accounts-ui
 
 
+### Controlling Database Access
+
+  Meteor.user()
+  Meteor.userId()
+
+  # works
+  Items.insert({name: "one", owner: Meteor.userId()})
