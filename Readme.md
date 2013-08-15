@@ -25,3 +25,14 @@
 ## Templates
 
   - head tags + body tags from all html files will be concatenated and sent as one file to the client
+
+  - has callbacks
+    - rendered
+    - created
+    - destroyed
+
+  - this.data -> the object, that was passed to the template
+
+
+## Collections
+
