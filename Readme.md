@@ -36,3 +36,21 @@
 
 ## Collections
 
+  ... cool stuff.
+
+
+
+## Smart Packages
+  # https://tutsplus.com/lesson/smart-packages/
+
+  $ meteor remove ...
+  $ meteor add ...
+  $ meteor list
+
+## Publishing & Subscribing with Collections
+
+
+
+
+
+
