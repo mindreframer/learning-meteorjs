@@ -4,12 +4,18 @@ if (Meteor.isClient){
   Template.personList.people = function(){
     return People.find();
   }
+  var addPerson = function(e, t){
+    var el = t.find("#name");
+    People.insert({name: el.value});
+    el.value = "";
+  }
 
   Template.personForm.events({
-    'click button': function(e, t){
-      var el = t.find("#name");
-      People.insert({name: el.value});
-      el.value = "";
+    'click button': addPerson,
+    'keypress': function(e, t){
+      if (e.keyCode === 13){
+        addPerson(e,t)
+      }
     }
   });
 
@@ -17,6 +23,10 @@ if (Meteor.isClient){
   Template.person.editing = function(){
     return Session.get("edit-" + this._id);
   }
+
+  // Template.person.rendered = function () {
+  //   var
+  // };
 
 
   Template.person.events({
@@ -28,6 +38,9 @@ if (Meteor.isClient){
         People.update(t.data._id, {$set: {name: e.currentTarget.value}});
         Session.set("edit-"+t.data._id, false)
       }
+    },
+    'click .del': function(e, t){
+      People.remove(t.data._id)
     }
   });
 }
