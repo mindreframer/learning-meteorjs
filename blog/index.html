@@ -1,0 +1,51 @@
+<head>
+  <title>My Blog</title>
+</head>
+
+<body>
+  {{> main}}
+</body>
+
+<template name="main">
+  {{loginButtons}}
+  {{> header}}
+  {{> newPostForm}}
+  {{> posts}}
+</template>
+
+
+<template name="header">
+  <h2> <a href="/">My Blog</a></h2>
+
+  {{#if adminLoggedIn}}
+    <button> New Post</button>
+  {{/if}}
+</template>
+
+<template name="newPostForm">
+  {{#if show}}
+    <div class="postForm">
+      <input type="text" id='title' placeholder='title'>
+      <input type="text" id='slug' placeholder='slug'>
+      <textarea  id="content" cols="30" rows="10"></textarea>
+      <button>Post</button>
+    </div>
+  {{/if}}
+</template>
+
+<template name="posts">
+  <div class="posts">
+    {{#each posts}}
+      {{> posts}}
+    {{/each}}
+  </div>
+</template>
+
+<template name='post'>
+  <article>
+    <h2> <a href="/{{slug}}">{{title}}</a></h2>
+    <p>{{createdOn}}</p>
+    <p>{{content}}</p>
+    <hr>
+  </article>
+</template>
