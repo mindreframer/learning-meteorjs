@@ -66,3 +66,12 @@
 
   # works
   Items.insert({name: "one", owner: Meteor.userId()})
+
+
+### Email
+
+
+### Deploying
+
+
+### Backbone
