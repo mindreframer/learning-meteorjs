@@ -1,4 +1,4 @@
-People = new Meteor.Collection("People")
+People = new Meteor.Collection("people")
 
 if (Meteor.isClient){
   Template.personList.people = function(){
