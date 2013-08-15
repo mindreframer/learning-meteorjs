@@ -25,25 +25,30 @@
 <template name="newPostForm">
   {{#if show}}
     <div class="postForm">
-      <input type="text" id='title' placeholder='title'>
-      <input type="text" id='slug' placeholder='slug'>
+     <fieldset>
+      <legend>Post:</legend>
+      Title: <input type="text" id='title' placeholder='title'><br>
+      Slug: <input type="text" id='slug' placeholder='slug'><br>
       <textarea  id="content" cols="30" rows="10"></textarea>
-      <button>Post</button>
+     </fieldset>
+     <button>Post</button>
     </div>
   {{/if}}
 </template>
 
 <template name="posts">
-  <div class="posts">
+  {{#if show}}
+  <div class="post">
     {{#each posts}}
-      {{> posts}}
+      {{> post}}
     {{/each}}
   </div>
+  {{/if }}
 </template>
 
 <template name='post'>
   <article>
-    <h2> <a href="/{{slug}}">{{title}}</a></h2>
+    <h2> <a href="{{slug}}">{{title}}</a></h2>
     <p>{{createdOn}}</p>
     <p>{{content}}</p>
     <hr>
