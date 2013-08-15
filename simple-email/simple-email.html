@@ -1,0 +1,14 @@
+<head>
+  <title>simple-email</title>
+</head>
+
+<body>
+  {{> emailForm}}
+</body>
+
+<template name="emailForm">
+  <input type="text" id="to" placeholder="to">
+  <input type="text" id="subject" placeholder="subject">
+  <textarea id="text" cols="30" rows="10"></textarea><br>
+  <button>Send </button>
+</template>
