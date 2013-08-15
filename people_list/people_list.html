@@ -1,0 +1,37 @@
+<head>
+  <title>People List</title>
+</head>
+
+
+<body>
+  {{> personForm}}
+  {{> personList}}
+</body>
+
+<template name="personForm">
+  <div>
+    <input type="text" id="name">
+    <button>Add</button>
+  </div>
+</template>
+
+<template name="personList">
+
+  <h1>People List</h1>
+
+  <ul>
+    {{#each people}}
+      {{> person}}
+    {{/each}}
+  </ul>
+</template>
+
+<template name="person">
+  <li>
+    {{#if editing}}
+      <input type="text" value="{{name}}">
+    {{  else }}
+      <span class="name">{{ name }}</span>
+    {{/if }}
+  </li>
+</template>
