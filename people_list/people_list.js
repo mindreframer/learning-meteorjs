@@ -42,6 +42,9 @@ if (Meteor.isClient){
         Session.set("edit-"+t.data._id, false)
       }
     },
+    'click .cancel': function(e, t){
+      Session.set("edit-"+t.data._id, false)
+    },
     'click .del': function(e, t){
       People.remove(t.data._id)
     }

@@ -29,7 +29,7 @@
 <template name="person">
   <li>
     {{#if editing}}
-      <input type="text" value="{{name}}">
+      <input type="text" value="{{name}}"> <span class="cancel"><a href="#">cancel</a></span>
     {{  else }}
       <span class="name">{{ name }}</span> <span class="del"> (X) </span>
     {{/if }}
