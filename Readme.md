@@ -20,3 +20,8 @@
 ## Public assets
   - only images
 
+
+
+## Templates
+
+  - head tags + body tags from all html files will be concatenated and sent as one file to the client
