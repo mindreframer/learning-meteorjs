@@ -24,9 +24,12 @@ if (Meteor.isClient){
     return Session.get("edit-" + this._id);
   }
 
-  // Template.person.rendered = function () {
-  //   var
-  // };
+  Template.person.rendered = function () {
+    var input = this.find('input')
+    if (input){
+      input.focus();
+    }
+  };
 
 
   Template.person.events({
