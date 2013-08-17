@@ -1,0 +1,51 @@
+<head>
+  <title>MyApp</title>
+</head>
+
+<body>
+	<div class="container">
+		{{> contacts}}
+	</div>
+</body>
+
+
+<template name="contact">
+	<tr>
+		<td>{{FirstName}}</td>
+		<td>{{LastName}}</td>
+		<td>{{City}}</td>
+		<td>{{Email}}</td>
+	</tr>
+</template>
+
+
+<template name="contacts">
+	<table class="table table-striped table-bordered table-condensed">
+		<thead>
+    	<tr>
+        <th class="FirstName">{{first_nameHeader}}</th>
+        <th class="LastName">{{last_nameHeader}}</th>
+        <th class="City">{{city_Header}}</th>
+        <th class="Email">{{email_Header}}</th>
+      </tr>
+    </thead>
+		<tbody>
+      {{#each contacts}}
+      {{> contact}}
+      {{/each}}
+    </tbody>
+	</table>
+	{{> pager}}
+</template>
+
+<template name="pager">
+	 <div class="pagination pagination-centered">
+    <ul>
+      <li class="{{firstEnabled}}"><a class="first_record" rel="tooltip" data-original-title="First record" href="#">First</a></li>
+      <li class="{{previousEnabled}}"><a class="previous_record" rel="tooltip" data-original-title="Previous" href="#">Previous</a></li>
+      <li><a> Page {{CurrentPage}} from {{TotalPages}}</a></li>
+      <li class="{{nextEnabled}}"><a class="next_record" rel="tooltip" data-original-title="Next record" href="#">Next</a></li>
+      <l class="{{lastEnabled}}"><a class="last_record" rel="tooltip" data-original-title="Last record" href="#">Last</a></li>
+    </ul>
+	</div>
+</template>
