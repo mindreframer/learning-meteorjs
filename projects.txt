@@ -28,6 +28,7 @@ https://github.com/phillc/retrus.git
 https://github.com/lashleigh/meteor-touring.git
 https://github.com/eric-naguras/OfficeContacts.git
 https://github.com/meteor/madewith.git
+https://github.com/meteor/telephone-pictionary.git
 https://github.com/hharnisc/meteor-twitter-locationstream.git
 https://github.com/awatson1978/dictionary.git
 https://github.com/awatson1978/forms-kitchen-sink.git
