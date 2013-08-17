@@ -1,0 +1,13 @@
+{
+  "meteor": {
+    "git": "https://github.com/meteor/meteor.git",
+    "branch": "master"
+  },
+  "packages": {
+    "accounts-asana": {},
+    "accounts-ui-bootstrap-dropdown": {},
+    "sugar": {},
+    "router": {},
+    "observatory": {}
+  }
+}

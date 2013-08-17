@@ -1,0 +1,66 @@
+<template name="tasks">
+{{#if hasTasks}}
+<table id="tasks" class="content table table-striped table-bordered table-hover">
+ <thead>
+    <tr>
+      <th>Task <div class="divclearable {{#if currentSearchString}}active{{/if}}"><input id="taskSearch" class="clearable" value="{{currentSearchString}}"><a class="clearlink clearTaskSearch" href="javascript:" title="Click to clear this textbox"></a></div></th>
+   	  <th>Due Date</th>
+   	  <th>Estimated Time</th>
+   	  <th>Worked Time</th>
+   	  <th></th>
+    </tr>
+  </thead>
+    <tbody>
+{{#each tasks}}
+	<tr id="task_{{_id}}" class="task {{#if overRunning}}overRunning{{/if}} {{#if overDue}}overDue{{/if}}">
+		<td>
+				{{#if taskHasDetails}}
+				<p>
+				<a href="javascript:" class="taskname" data-toggle="collapse" data-target="#taskdetails_{{_id}}">{{details.name}}
+				</a>
+
+				</p>
+				<p class="taskdetails collapse" id="taskdetails_{{_id}}" >{{details.notes}}</p>
+				{{else}}
+				<p><span class="taskname" >{{details.name}}</span></p>
+				{{/if}}
+				{{#each tags}}
+						<span class="label tag">{{name}}</span>
+				{{/each}}
+
+
+		</td>
+		<td class="dueDate">
+		<span class="label date">{{dueDate}}</span>
+		</td>
+		<td class="estimatedTime">
+		<span class="{{#if isAdmin}}editable{{/if}} estimatedSecs">{{formatEstimatedSecs}}</span>
+		{{#if isAdmin}}
+		<span class="estimatedTimeInput" style="display:none" >
+			<input class="estimatedHours" type="text" value="{{estimatedHours}}"/> H,
+			<input  class="estimatedMins" type="text" value="{{estimatedMins}}"/>m
+		</span>
+		{{/if}}
+		</td>
+		<td class="workedTime">
+		{{formatWorkedSecs}} 
+
+		</td>
+		<td>
+      {{#isolate}}
+		{{#if taskIsRunning}}
+		  <button id="cronWatchButton_{{_id}}" class="stopwatch btn btn-primary btn-danger" type="button">STOP</button>
+		{{else}}
+		  <button id="cronWatchButton_{{_id}}" class="stopwatch btn btn-primary" type="button">START</button>
+		{{/if}}
+      {{/isolate}}
+		</td>
+	</tr>
+{{/each}}
+ </tbody>
+</table>
+{{/if}}
+
+
+
+</template>
