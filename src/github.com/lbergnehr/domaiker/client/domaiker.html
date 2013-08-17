@@ -1,0 +1,54 @@
+<head>
+  <title>domaiker—The domain name maker!</title>
+</head>
+
+<body>
+	{{> domain}}
+	<footer>
+		<div>Created by <a href="https://twitter.com/lbergnehr">@lbergnehr</a></div>
+		<div>
+			with <a href="http://meteor.com">Meteor</a> using backgrounds from <a href="http://subtlepatterns.com">subtlepatterns.com</a>
+		</div>
+	</footer>
+</body>
+
+<template name="domain">
+	<div class="container">
+		<header id="header">
+			<h1>Create your next domain name here!</h1>
+		</header>
+
+		<input id="domain-name-input" name="name" type="text" placeholder="Some cool name" />
+
+		{{#if hasNoResults}}
+		<div id="no-matches">
+			<span>No matches</span>
+			<div>:(</div>
+		</div>
+		{{/if}}
+
+		<div id="results">
+			{{#each results}}
+			<div><a href=http://{{this}}>{{this}}</a></div>
+			{{/each}}
+
+			{{> popularSearches}}
+		</div>
+	</div>
+</template>
+
+<template name="popularSearches">
+	<div id="popularSearchesList">
+		<h6>Popular searches</h6>
+			{{#each searches}}
+			<div>
+				<span>{{name}}: {{count}}</span>
+			</div>
+			{{/each}}
+	</div>
+</template>
+
+
+
+
+

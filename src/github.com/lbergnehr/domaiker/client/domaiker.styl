@@ -1,0 +1,84 @@
+bodyColor = #333
+dimBodyColor = #555
+contentBorder = 1px dotted #111
+
+debugBorder()
+	border 1px solid red
+
+transformRotate(degrees)
+	transform rotate(degrees)
+	-ms-transform rotate(degrees) /* IE 9 */
+	-moz-transform rotate(degrees) /* Firefox */
+	-webkit-transform rotate(degrees) /* Safari and Chrome */
+	-o-transform rotate(degrees) /* Opera */
+
+*
+	font-family "Helvetica Neue" "Helvetica"
+	color bodyColor
+
+linkColor = darkgreen
+a, a:visited
+	color linkColor
+	text-decoration none
+a:hover
+	color #333
+
+body
+	margin 0
+	background-image url('/img/dust.png')
+
+footer
+	text-align center
+	width 100%
+	position fixed
+	bottom 0px
+	padding 5px
+	background-image url('/img/green-fibers.png')
+	border-top contentBorder
+	div
+		color #222
+header
+	margin-top 0
+	margin-bottom 30px
+	padding-top 10px
+	height 100px
+	width 100%
+	background-image url('/img/green-fibers.png')
+	border-bottom contentBorder
+	h1
+		font-family "Helvetica Neue"
+		// font-weight normal
+		letter-spacing 1px
+		text-shadow: 0 2px 0 rgba(0, 0, 0, 0.8)
+		color darken(orange, 20%)
+
+.container
+	text-align center
+
+#domain-name-input
+	text-align center
+	margin 20px
+	height 2em
+	font-size 2.7em
+	color #333
+
+#results
+	text-align center
+	font-size 3em
+
+#no-matches
+	color dimBodyColor
+	font-size 3em
+	text-shadow: 1px 2px 2px rgba(200, 200, 200, 0.5)
+	div, span
+		color inherit
+	div
+		transformRotate(90deg)
+
+#results, #no-matches
+	margin-top 30px
+
+#popularSearchesList
+	h6
+		margin-bottom 3px
+		color dimBodyColor
