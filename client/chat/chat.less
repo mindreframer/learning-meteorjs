@@ -1,0 +1,54 @@
+@import "../common.less";
+
+@hide-chat-time: 450;  /* this is shared with chat.less via hide-chat-time-global */
+
+#hide-chat-time-global {
+    display:none;
+    width: unit(@hide-chat-time,px)
+}
+
+#new-chat {
+    margin-top: 4px;
+    width: 100%;
+}
+
+#new-chat-submit {
+    float: right;
+    margin-bottom: 4px;
+    padding: 0.2em 1em 0.3em 1em;
+}
+
+#new-chat-submit-div {
+    overflow:hidden;
+}
+
+#chats {
+    clear: both;
+    margin-bottom: 6px;
+}
+
+.chat-username {
+    color: #44aa44;
+    font-size: 82%;
+}
+
+.old-chat {
+    .rounded-corners(2px);
+    margin-top: 3px;
+    .property-transition(background-color,0.45s,linear,0);
+    display: none;
+    opacity: 0;
+}
+
+.old-old-chat {
+    background-color: yellow;
+}
+
+.new-old-chat {
+    background-color: #eee;
+    .property-transition(background-color,unit(@hide-chat-time*2,ms),linear,0);
+}
+
+.edit-chat-shrinker {
+    .property-transition(height,unit(@hide-chat-time,ms),linear,0);
+}

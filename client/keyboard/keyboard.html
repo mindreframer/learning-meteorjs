@@ -1,0 +1,10 @@
+<template name="keyboard">
+  <div id="keyboard-case" {{{render_on_resize}}} style="height:{{keyboardHeight}}px;">
+    {{#each keys}}
+      <div class="{{color}}-key" id="key-{{idx}}" style="left:{{leftOffset}}px;width:{{width}}px;"
+       ontouchstart="return key_pressed('{{idx}}')" onmousedown="return key_pressed('{{idx}}')">
+         {{keyboardKey}}
+      </div>
+    {{/each}}
+  </div>
+</template>
