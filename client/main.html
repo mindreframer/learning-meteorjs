@@ -1,0 +1,140 @@
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Hast: live presentation</title>
+  <meta name="description" content="Hast is a WYSISYG markdown flavor presentation tool made for everyone! We love markdown, did I mention it? It uses github style markdown. It quickly does the real time broadcasting and hot pushing changes. Hast uses Meteor, DeckJS, aceEditor, etc.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link id="theme-link" rel="stylesheet" type="text/css" href="/theme/hacky.css" />
+  <link id="transition-link" rel="stylesheet" type="text/css" href="/transition/fade.css" />
+</head>
+<body>
+  {{renderPage}}
+  {{>setup}}
+</body>
+
+<template name="header">
+<header class="navbar full-screen-related">
+  <div class="navbar-inner customized">
+    <a class="brand" href="/">
+      Hast
+    </a>
+    <ul class="nav">
+      <li>
+      <a href="{{homePath}}">New</a>
+      </li>
+      <li>
+      <a href="{{archivesPath}}">Archives</a>
+      </li>
+      <li>{{loginButtons}}</li>
+    </ul>
+    <ul class="nav pull-right messages">
+      <li class="message-notice-wrapper"><span class="label" id="message-notice"></span></li>
+    </ul>
+  </div>
+</header>
+</template>
+
+<template name="not_found">
+{{> header}}
+<div class="page-404">
+  <h1>// Hast Not Found, Oops...</h1>
+  <span><h4>This page does not exist or the hast is private.</h4></span>
+  <span><h4>Why not create your own hast?</h4></span>
+  <span><a class="btn btn-info" href="/">New Hast</a></span>
+</div>
+</template>
+
+<template name="Hast">
+{{> header}}
+<div class="new-hast-box row-fluid mode-isDemoMode-{{mode}}">
+  <div class="deck-box span8">
+    <div class="deck-container full-screen-related" id="deck-container">
+    </div>
+  </div>
+  <div class="editor-box span4 full-screen-related  visible-desktop">
+    <div class="editor-header">
+      <h4>Editor
+        <span class="editor-header-message"></span>
+      </h4>
+    </div>
+    <div id="editor" />
+  </div>
+  <div class="exit-full-screen-area full-screen-related">
+    <div class="full-screen-btn-group">
+      <span class="full-screen-btn btn btn-small btn-info">Full Screen</span>
+      <span class="btn-group dropup theme-btn">
+        <button class="btn btn-info btn-small dropdown-toggle" data-toggle="dropdown">
+          Themes <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="theme-selection" href="#">None</a></li>
+          <li><a class="theme-selection" href="#">Hacky</a></li>
+          <li><a class="theme-selection" href="#">MNML</a></li>
+          <li><a class="theme-selection" href="#">Neon</a></li>
+          <li><a class="theme-selection" href="#">Web-2.0</a></li>
+          <li><a class="theme-selection" href="#">Swiss</a></li>
+          <li><a class="theme-selection" href="#">SandStone</a></li>
+          <li><a class="theme-selection" href="#">SandStone.Aurora</a></li>
+          <li><a class="theme-selection" href="#">SandStone.Dark</a></li>
+          <li><a class="theme-selection" href="#">SandStone.Default</a></li>
+          <li><a class="theme-selection" href="#">SandStone.Firefox</a></li>
+          <li><a class="theme-selection" href="#">SandStone.Light</a></li>
+          <li><a class="theme-selection" href="#">SandStone.Mdn</a></li>
+          <li><a class="theme-selection" href="#">SandStone.Nightly</a></li>
+        </ul>
+      </span>
+      <span class="btn-group dropup transition-btn">
+        <button class="btn btn-info btn-small dropdown-toggle" data-toggle="dropdown">
+          Transitions <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="transition-selection" href="#">None</a></li>
+          <li><a class="transition-selection" href="#">Cube</a></li>
+          <li><a class="transition-selection" href="#">Fade</a></li>
+          <li><a class="transition-selection" href="#">Horizontal</a></li>
+          <li><a class="transition-selection" href="#">Vertical</a></li>
+        </ul>
+      </span>
+      <span class="exit-full-screen-btn fade-btn btn btn-small btn-info">Exit Full Screen</span>
+      <span class="sync-deck-btn fade-btn btn btn-small btn-info">Sync Play: On</span>
+      <span class="save-btn btn btn-info btn-small">Save </span>
+    </div>
+  </div>
+</div>
+</template>
+
+<template name="oldHast">
+{{> header}}
+{{#if currentUser}}
+<div class="archives-box">
+  {{#each files}}
+  <div class="alert alert-block">
+    <div class="pull-right">
+        <table>
+          <tr>
+            <td>
+              Share
+            </td>
+            <td>
+              <span class="switch switch-mini" data-on="info" data-on-label="<i class='icon-ok icon-white'></i>" data-off-label="<i class='icon-remove'></i>">
+                <input type="checkbox" {{checkedStatus type}} data-hastId="{{_id}}"/>
+              </span>
+            </td>
+          </tr>
+        </table>
+        <div class="btn btn-warning btn-mini btn-block delete-btn" data-hastId="{{_id}}">Delete</div>
+    </div>
+    <h4>
+      <a href="{{hastIdRoutePath _id}}">{{title}}</a>
+    </h4>
+    <p> <a href="{{hastIdRoutePath _id}}">http://hast.me{{hastIdRoutePath _id}}</a><br/></p>
+    <p>{{timeFromNow submitted}}</p>
+  </div>
+  {{/each}}
+</div>
+{{else}}
+{{/if}}
+</template>
+
+<template name="setup"></template>
