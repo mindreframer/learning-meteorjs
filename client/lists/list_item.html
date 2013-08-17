@@ -1,0 +1,15 @@
+<template name='item'>
+  <li>
+    {{#if url}}
+      <a href="{{url}}">{{text}}</a>
+    {{else}}
+      {{text}}
+    {{/if}}
+    {{#if isOwner}}
+      <a class='delete'><i class='icon-remove'></i></a>
+    {{/if}}
+    {{#if canVote}}
+      <a class='vote {{voteClass}}'><i class='icon-heart muted'></i></a>
+    {{/if}}
+  </li>
+</template>

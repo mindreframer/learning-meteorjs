@@ -1,0 +1,16 @@
+<template name='home'>
+  <div class="home">
+    <div class="container">
+      <h1>Lister</h1>
+      <p>Easy public shareable lists.</p>
+      <div class='search'>
+        <input type="text" id="query" value="{{query}}" placeholder="Search">
+      </div>
+      <ul class='home-list'>
+        {{#each items}}
+         {{> homeItem}}
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</template>
