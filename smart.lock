@@ -1,0 +1,15 @@
+{
+  "meteor": {},
+  "dependencies": {
+    "basePackages": {
+      "sharejs": {
+        "path": "../meteor-sharejs"
+      }
+    },
+    "packages": {
+      "sharejs": {
+        "path": "../meteor-sharejs"
+      }
+    }
+  }
+}

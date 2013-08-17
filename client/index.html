@@ -1,0 +1,48 @@
+<head>
+  <title>Meteor Docs!</title>
+</head>
+
+<body>
+    {{> main}}
+</body>
+
+<template name="main">
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span3">
+                {{> docList}}
+            </div>
+            <div class="span9">
+                {{> editor}}
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="docList">
+    <h3>Pick a document...</h3>
+    <ul class="nav nav-pills nav-stacked" id="list">
+    {{#each documents}}
+    {{> docItem}}
+    {{/each}}
+    </ul>
+    <h3>...or start a new one:</h3>
+    <button class="btn btn-warning">New document</button>
+    <br>
+    <a href="https://github.com/mizzao/meteor-documents-demo">Get the source</a>
+</template>
+
+<template name="docItem">
+    <li {{#if current}}class="active"{{/if}}>
+         <a href="#">{{title}}</a>
+    </li>
+</template>
+
+<template name="editor">
+    {{#if docid}}
+    <input class="input-xlarge" type="text" value="{{title}}">
+    <button class="btn btn-danger btn-small">Delete this document</button>
+    {{sharejsAce docid id="editor"}}
+    <h3>Edit from multiple browsers for maximum wow!</h3>
+    {{/if}}
+</template>
