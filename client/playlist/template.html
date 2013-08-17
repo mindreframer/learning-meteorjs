@@ -1,0 +1,80 @@
+<template name="playlist">
+  {{#if isVisible }}
+    <div id="playlist" class="{{class}}">
+      <h1>{{ headerText }}</h1>
+      {{> playlistItems }}
+      {{> addPlaylistItem }}
+    </div>  
+  {{/if}}
+</template>
+
+
+
+<template name="playlistItems">
+  <div id="playlistItems">
+    {{#each items }}
+      {{> playlistItem }}
+    {{/each}}
+    <div  id="trash" 
+      {{#if isTrashVisible }}
+        style="visibility:visible"
+      {{/if}}>
+      Drop down here to delete
+    </div>
+  </div>
+</template>
+
+
+
+<template name="playlistItem">
+  <div  {{#if isDraggingItem}}
+          class="playlistItem dragged"
+        {{else}}
+          class="playlistItem"
+        {{/if}}
+        id="{{ _id }}"
+        style="left:{{ dragDeltaX }}px; top:{{ dragDeltaY }}px">
+
+    <span class="playPauseIcon" id="playPauseIcon_{{ _id }}">
+      <span class="clickArea" id="playPauseIcon_clickArea_{{ _id }}"></span>
+      <i class="{{playPauseIconClass}}" />
+    </span>
+
+    <span class="container" id="container_{{ _id }}">
+      <span class="clickArea" id="container_clickArea_{{ _id }}"></span>
+      <span class="name">{{ name }}</span>
+      <span class="scrubber" style="width:{{ needlePosition }}px"></span>
+      <span class="background"></span>
+    </span>
+
+    <span class="moveIcon">
+      <span class="clickArea" id="moveIcon_clickArea_{{ _id }}"></span>
+      <i class="icon-move icon-white" />
+    </span>
+
+  </div>
+  
+  {{#if isPlaceholderVisible }}
+    <div class="placeholder" />
+  {{/if}}
+
+</template>
+
+
+
+<template name="addPlaylistItem">
+  <div id="addPlaylistItem">
+    <span class="loadingImage" 
+          {{#unless isTypeAheadLoading }} 
+            style="visibility:hidden" 
+          {{/unless}}>
+      <div class="spinner" />
+    </span>
+    <input id="playlistViewNew" />
+    <div class="typeAheads">
+      {{#each typeAheadResults }}
+        <div class="option {{#if isTypeAheadSelected}}selected{{/if}}">{{ label }}</div>
+      {{/each}}
+    </div>
+  </div>
+</template>
