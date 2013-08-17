@@ -1,0 +1,60 @@
+= TypesScript and CoffeeScript ports of the Meteor Leaderboard
+
+:listingblock.: <pre><code>|</code></pre>
+
+== TypesScript and CoffeeScript ports of the Meteor Leaderboard
+
+A http://www.typescriptlang.org/[TypeScript] port and a
+http://coffeescript.org/[CoffeeScript] port of the
+http://meteor.com/[Meteor] framework's
+http://meteor.com/examples/leaderboard[Leaderboard example].
+
+Live demo at http://leaderboardtscs.meteor.com
+
+The original Leaderboard has been enhanced with:
+
+- Bootstrap styling.
+- You can add and delete players.
+- Login authentication.
+- Drop-down menus to reset the data and sort players by name and
+  score.
+- Tooltips, modal dialogs, popup notifications.
+- https://github.com/oortcloud/meteorite[Meteorite] smart packages.
+
+Here's a
+https://github.com/srackham/leaderboard/blob/master/screenshot.png[screenshot].
+
+CSS is written using http://lesscss.org/[Less]. The UI uses Twitter
+http://twitter.github.com/bootstrap/[Bootstrap],
+http://bootboxjs.com/[Bootbox.js] and
+https://github.com/srackham/toast.js[toast.js].
+
+Current version tested using:
+
+- Meteor version 0.6.0
+- Meteorite version 0.5.1
+- TypeScript 0.8.3.0
+- CoffeeScript version 1.6.2
+- Jake 0.5.13
+
+
+=== Installation
+In addition to using built-in Meteor packages the project uses two
+https://github.com/oortcloud/meteorite[Meteorite] smart packages:
+'bootboxjs' for modal dialogs and 'toastjs' for popup notifications.
+
+Clone leaderboard from Github:
+
+  git clone git://github.com/srackham/leaderboard.git
+  cd leaderboard
+
+The build process is managed by https://github.com/mde/jake[jake].
+Run `jake build.ts` to compile the TypeScript port or `jake
+build.cs` to compile the CoffeeScript port (choose one):
+
+  jake build.ts   # TypeScript
+  jake build.cs   # CoffeeScript
+
+Now you can install and run using the Meteorite command:
+
+  mrt
