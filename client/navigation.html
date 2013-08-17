@@ -1,0 +1,19 @@
+<template name="navigation">
+	<nav id="main-nav">
+		<div class="btn-group">
+			{{#each categories}}
+				<button class="category-item btn-large btn{{buttonStatus}}" id="{{_id}}">{{name}}</button>
+			{{/each}}
+		</div>
+	</nav>
+	<nav id="option-nav">
+		{{loginButtons}}
+		{{#if currentUser}}
+			{{#if categorySelected }}
+				<button id="add-button" class="btn btn-success btn-mini">New</button>
+				<button id="edit-button" class="btn btn-warning btn-mini {{itemsSelected}}">Edit</button> 
+				<button id="delete-selected" class="btn btn-danger btn-mini {{itemsSelected}}">Remove Selected</button>
+			{{/if}}
+		{{/if}}
+	</nav>
+</template>

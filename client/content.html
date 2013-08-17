@@ -1,0 +1,37 @@
+<template name="content">
+	{{#if hasMessage}}
+		<div class="msg">
+			<i class="icon-info-sign"></i> <em>{{message}}</em>
+		</div>
+	{{/if}}
+	<section id="items">	
+	{{#each items}} 
+		<div class="item">
+			<ul>
+				<li class="itm {{itemStyle}}" id="{{_id}}">
+					<table>
+						<tr>
+							<td><span class="item-name">{{item}}</span></td>
+						</tr>
+						<tr>
+							<td><span class="assigned-to">Assigned to <span class="asgn-user">{{assignedTo}}</span></span></td>
+						</tr>
+						<tr>
+							<td><p>{{description}}</p></td>
+						</tr>
+					</table>
+					
+				</li>
+			</ul>
+		</div>
+	{{/each}}
+	</section>
+	{{#if categorySelected }}
+		{{else}}
+			<p>Welcome to the Scrum Backlog App.</p>
+			Usage: <em>To add an item first select a category, then press new <br/>
+			To view backlog items press a category in the menu <br/>
+			To move backlogs, select them then press the category
+			</em>
+	{{/if}}
+</template>
