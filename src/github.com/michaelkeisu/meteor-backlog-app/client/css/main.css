@@ -1,0 +1,83 @@
+#container {
+	margin-top: 17px;
+	width: 600px;
+	height: 100%;
+	position: absolute;
+	margin-left: 300px;
+}
+
+#page-header header {
+	width: 600px;
+	height: 75px;
+	display: block;
+}
+
+#option-nav {
+	margin-bottom: 15px;
+}
+
+#page-middle {
+	width: 600px;
+	display: block;
+}
+
+.selected {
+	border: 0;
+	background-color: yellow;
+}
+
+.item ul{
+	margin: 0;
+	padding: 0;
+}
+
+.item li {
+	list-style: none;
+}
+
+.item {
+	/*background-color: #ffff88;*/
+	padding: 3px;
+	background-color: #fdfa8e;
+	box-shadow: 1px 3px 3px #666;
+	width: 320px;
+	max-height: 320px;	
+	word-break: break-word;
+	overflow-y: hidden;
+	font-family: Nothing You Could Do, arial, sans-serif;
+	color: #444;
+	margin-bottom: 12px;
+	overflow: hidden;
+}
+
+#page-header .btn-group {
+	margin-bottom: 12px;
+}
+
+p {
+	font-size: 1.4em;
+}
+
+.msg {
+	width: 370px;
+	background-color: #FFFFC0;
+	margin-bottom: 1em;
+}
+
+.asgn-user {
+	font-family: helvetica, arial;
+	font-weight: 900;
+	color: blue;
+}
+.assigned-to {
+	font-family: helvetica, arial;
+	font-weight: 900;
+}
+
+.item-name {
+	font-family: helvetica, arial;
+	font-size: 1.5em;
+	font-weight: 400;
+}
+
+

@@ -1,0 +1,10 @@
+<template name="addingEditing"> <!-- the add / edit view -->
+	<div class="add-edit">
+		<label for="tf-{{addOrEdit}}-name">User story name:</label>
+		<input id="tf-{{addOrEdit}}-name" type="text" value=""/>
+		<label for="ta-{{addOrEdit}}-description">User story description:</label>
+		<textarea cols="10" rows="8" id="ta-{{addOrEdit}}-description" value=""/></br>	
+		<button class="btn btn-small" id="{{insertOrUpdate}}-item">{{addOrUpdate}}</button>
+		<button class="btn btn-small" id="cancel">Cancel</button>
+	</div>
+</template>
