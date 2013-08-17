@@ -1,0 +1,136 @@
+<head>
+	<title>debt</title>
+</head>
+
+<body>
+	{{> main}}
+</body>
+
+<template name="main">
+	<div class="container">
+		{{#if isHome}}
+		<div id="home">
+			{{> home}}
+		</div>
+		{{/if}}
+
+		{{#unless isHome}}
+		<div id="event">
+			{{> event}}
+		</div>
+		{{/unless}}
+	</div>
+</template>
+
+<template name="home">
+	<h2>Create your event</h2>
+	<form>
+		<fieldset>
+			<legend>New event</legend>
+			<input type="text" placeholder="Name of the event">
+			<button disabled="disabled" type="submit" class="btn btn-primary">Create event</button>
+		</fieldset>
+	</form>
+</template>
+
+<template name="event">
+	{{#if event}}
+	<textarea spellcheck="false" name="event-name" cols="30" class="h3 editable">{{event.name}}</textarea>
+	{{> participants}}
+	<div id="debts">
+		{{#each debts}}
+		{{> debt}}
+		{{/each}}
+	</div>
+	{{/if}}
+
+	{{#unless event}}
+	<h1>That is not the event you are looking for...</h1>
+	{{/unless}}
+</template>
+
+<template name="participants">
+	<div class="participants">
+		<form class="form-inline">
+			<input type="text" id="participant-name" placeholder="Name of new participant" />
+			<input type="email" id="participant-email" placeholder="Email of new participant" />
+			<button type="submit" id="add-participant-btn" class="btn">Add participant</button>
+		</form>
+		<div class="information">
+			<span>Drag from the person lending money over one or more loaners.</span>
+		</div>
+
+		{{> addDebtDialog}}
+		{{#constant}}
+		<div class="participant-group">
+		</div>
+		{{/constant}}
+	</div>
+</template>
+
+<template name="participant">
+	<div>
+		<div class="participant-inner">
+			<img src="http://www.gravatar.com/avatar/{{participant.hash}}?s={{imageSize}}" alt="{{participant.name}}" class="img-circle">
+
+			<p>{{participant.name}}</p>
+		</div>
+		<div class="participant-debts">
+			<h6>Debts</h6>
+			<ul>
+				{{#each participantDebts}}
+				<li><span>{{financierName}}:&nbsp;{{amount}}</span></li>
+				{{/each}}
+			</ul>
+		</div>
+	</div>
+</template>
+
+<template name="addDebtDialog">
+	{{#if showAddDebtDialog}}
+	<div id="add-debt-container">
+		<form class="form">
+			<legend>
+				<label>Add debt</label>
+			</legend>
+			<input type="text" name="name" placeholder="Name of expense" />
+			<input type="number" name="amount" class="input-small" placeholder="Amount" />
+
+			<div class="form-actions">
+				<button type="button" class="btn">Cancel</button>
+				<button type="submit" class="btn btn-success">Save debt</button>
+			</div>
+		</form>
+	</div>
+	{{/if}}
+</template>
+
+<template name="debt">
+	<div class="debt well well-small">
+		<i class="icon-remove remove-button"></i>
+		<div class="row-fluid">
+			<div class="debt-avatars span6 row-fluid">
+				<div class="span2">
+					<img src="http://www.gravatar.com/avatar/{{financierAvatarHash}}?s=32" class="img-circle" />
+					<span>{{financierName}}</span>
+				</div>
+
+				<div class="span2"><i class="icon-arrow-right"></i></div>
+
+				<div class="span2">
+					<img src="http://www.gravatar.com/avatar/{{borrowerAvatarHash}}?s=32" class="img-circle" />
+					<span>{{borrowerName}}</span>
+				</div>
+			</div>
+
+			<div class="span6">
+				<form class="form-inline">
+					<input type="text" placeholder="Expense description" value="{{name}}" />
+					<input type="number" class="input-small" placeholder="Amount" value="{{amount}}" />
+				</form>
+			</div>
+		</div>
+	</div>
+</template>
+
+
