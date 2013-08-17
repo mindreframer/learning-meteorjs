@@ -1,0 +1,172 @@
+/* CSS declarations go here */
+body {
+  background: #FAFAFA;
+	line-height: 1.5;
+}
+header {
+  height: 40px;
+  background: #f2f2f2;
+}
+.help {
+  padding: 10px 0;
+}
+.elevation {
+  position: absolute; 
+  bottom: 0px; 
+  right: 0px; 
+  width: 400px; 
+  height: 200px;
+  background: #ddd; 
+  z-index: 0;
+  -webkit-transition: all 300ms ease-out 100ms;
+}
+.travel {
+  position: absolute; 
+  top: -100px; 
+  left: 0; 
+  background: #404040; 
+  color: white; 
+  width: 30%; 
+  height: 100px;
+  z-index: 999;
+  text-align: center;
+  -webkit-transition: all 300ms ease-out 100ms;
+  img.mode {
+    opacity: 0.5;
+    border: 1px solid;
+    border-radius: 4px;
+    background: #f1f1f1;
+    margin: 30.5px 5px;
+  }
+  img.selected {
+    opacity: 1.0;
+  }
+  img:hover {
+    background: rgba(53,122,232,0.5);
+    cursor: pointer;
+  }
+  .exit {
+    right: 12px;
+    position: absolute;
+    top: 36px;
+  }
+}
+.editable {
+  background-color: transparent;
+  -webkit-transition: all 200ms ease-in 10ms;
+}
+.editable:hover {
+  background-color: #FFF7A3;
+}
+.show_trip {
+  margin-top: 10px;
+}
+.trip_thumbnail {
+  float: left;
+  margin: 10px;
+  padding: 10px;
+  width: 300px;
+  overflow: hidden;
+  background: #eee;
+  border-radius: 4px;
+  background: #eee;
+  -webkit-transition: all 200ms ease-in 10ms;
+  h1 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  img {
+    width: 300px;
+    height: 250px;
+    overflow: hidden;
+    margin-bottom: -5px;
+  }
+}
+.trip_thumbnail:hover {
+  background: #FAD6A5; //-webkit-gradient(linear, 0 0, 0 100%, from(hsl(35, 89%, 81%)), to(hsl(20, 100%, 85%)));
+  cursor: pointer;
+}
+.days {
+  border-bottom: 1px solid #CCC;
+  border-top: 1px solid #CCC;
+}
+#content {
+  float: left;
+  width: 30%;
+  height: 100%;
+  overflow-y: scroll;
+  .current {
+    background: #EDE4F6;
+  }
+  .day {
+    display: block;
+    height: 50px;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid #CCC;
+    border-top: 1px solid #CCC;
+    .stop, .order, .distance {
+      float: left;
+      height: 100%;
+      padding: 18px 5px;
+      margin-left: 32px;
+      line-height: 1;
+    }
+    .stop {
+      margin-left: 8px;
+    }
+    .distance {
+      margin-left: 8px;
+    }
+  }
+  .insert, .directions, .destroy {
+    position: absolute;
+    margin: 6px;
+    height: 12px;
+    width: 12px;
+  }
+  .wrap {
+    position: absolute;
+    top: 13px;
+    height: 24px;
+    width: 24px;
+    border-radius: 20px;
+  }
+  .directions_wrap {
+    right: 36px;
+  }
+  .insert_wrap {
+    right: 10px;
+  }
+  .destroy_wrap {
+    left: 2px;
+    .destroy {
+      width: 10px;
+      margin: 6px 7px;
+    }
+  }
+  .day:hover {
+    border-color: #B395DC;
+    .destroy {
+      background: url('/gh-icons.png') no-repeat -12px -60px;
+    }
+    .directions {
+      background: url('/gh-icons.png') no-repeat -12px -264px;
+    }
+    .insert {
+      background: url('/gh-icons.png') no-repeat -12px -144px;
+    }
+    .wrap {
+      background-color: #bbb;
+    }
+    .wrap:hover {
+      background-color: #555;
+    }
+  }
+}
+#map_canvas {
+  float: right;
+  width: 70%;
+  height: 100%;
+}
