@@ -1,0 +1,18 @@
+body {
+  /* Offset the container below the topbar */
+
+  padding-top: 60px;
+}
+.navbar {
+  width: 600px;
+}
+.container {
+  width: 300px !important;
+  margin-left: 20px !important;
+}
+.contact .increment:hover,
+.contact .remove:hover {
+  cursor: pointer;
+}
+
+

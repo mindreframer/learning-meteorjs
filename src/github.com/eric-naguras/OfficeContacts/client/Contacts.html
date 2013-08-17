@@ -1,0 +1,63 @@
+<head>
+  <title>Contacts</title>
+   <link rel="shortcut icon" href="/img/favicon.ico">
+</head>
+
+<body>
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        {{> navbar}}
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    {{> contacts}}
+  </div>
+</body>
+
+<template name="contacts">
+	<table class="table table-striped">
+    <thead>
+    	<tr>
+        <th class="inoutHeader" style="width: 80px">{{inoutHeader}}</th>
+        <th class="nameHeader">{{nameHeader}}</th>
+      </tr>
+    </thead>
+    <tbody>
+    {{#each contacts}}
+      {{> contact}}
+    {{/each}}
+  	</tbody>
+  </table>
+</template>
+
+<template name="contact">
+	<tr class="contact">
+		<td class="button-column">
+			<div class="btn-group" data-toggle="buttons-radio">
+			  <button class="inBtn btn {{in}}">In</button>
+			  <button class="outBtn btn {{out}}">Out</button>
+			</div>
+		</td>
+		<td>{{name}}</td>
+	</tr>
+</template>
+
+<template name="navbar">
+  <a class="brand" href="#">Contacts</a>
+  <ul class="nav">
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Actions<b class="caret"></b></a>
+      <ul class="dropdown-menu">
+      	<li class="sort_by_name"><a href="#">Sort by Name</a></li>
+      	<li class="sort_by_inout"><a href="#">Sort by Attendance</a></li>
+        <li class="divider"></li>
+        <li class="reset_data"><a href="#">Reset Data</a></li>
+      </ul>
+    </li>
+    <li><a href="https://github.com/srackham/leaderboard-coffeescript">Github</a></li>
+    <li><a href="http://meteor.com/examples/leaderboard">About</a></li>
+  </ul>
+</template>
+
