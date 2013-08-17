@@ -31,3 +31,6 @@ https://github.com/meteor/madewith.git
 https://github.com/hharnisc/meteor-twitter-locationstream.git
 https://github.com/awatson1978/dictionary.git
 https://github.com/awatson1978/forms-kitchen-sink.git
+https://github.com/grigio/meteor-geohash.git
+https://github.com/gabrielhpugliese/meteor_supercalendar.git
+https://github.com/BeDifferential/lister.git
