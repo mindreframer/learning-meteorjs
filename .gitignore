@@ -1,0 +1,5 @@
+/.meteor
+/.idea
+*.tgz
+/README.txt
+/run.sh

@@ -1,0 +1,132 @@
+<head>
+    <title>Meteor MapPush</title>
+    <meta name="viewport" content="width=device-width,maximum-scale=1,minimum-scale=1">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+            <a class="brand" href="#">Meteor MapPush</a>
+            <ul class="nav">
+                <li><a href="#about">About</a></li>
+                <li><a href="https://github.com/mbarth/meteor-map-push" target="_blank">Source Code</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <h2>Meteor MapPush
+            <small>
+                A <a href="http://meteor.com" target="_blank">Meteor</a> port
+                of the <a href="https://github.com/Atmosphere/atmosphere" target="_blank">Atmosphere</a>
+                <a href="https://github.com/ncolomer/MapPush" target="_blank">MapPush example</a>
+            </small>
+        </h2>
+    </div>
+    <div class="row-fluid">
+        <div id="map">
+            <div id="map-canvas"></div>
+            <div id="map-stats">
+                <div><span class="eps">0</span> <b>EPS</b></div>
+                <div class="treText"><span class="tre">0</span> Total</div>
+            </div>
+        </div>
+
+        {{> controls}}
+
+        <a name="about"></a>
+        <h2>Description</h2>
+        <dl class="dl-horizontal">
+            <dt>Summary</dt>
+            <dd>This Javascript application was built using the <a href="http://meteor.com" target="_blank">Meteor</a>
+                framework and allows you to transmit and receive GPS events in real-time. These GPS events appear as
+                location pins (<img src="img/marker-icon.png" width="10px" style="vertical-align: top;" /><img src="img/marker-shadow.png" width="15px" style="vertical-align: top;margin: 2px 0 0 -10px;" />)
+                on the geomap above. A user can generate a GPS event by clicking on the map or select <strong><i class="icon-play"></i> Start</strong>
+                to generate random GPS events on the client side. Generated GPS events are delivered to any
+                connected client using the Meteor framework. Note: you must first select <strong><i class="icon-resize-small"></i> Connect</strong>
+                to receive and transmit any events. The location pins are removed after 5 seconds.
+            </dd>
+            <dt>Real-time Changes</dt>
+            <dd>This application highlights how changes made by users are automatically transmitted to every connected client
+                in real-time. Test it out yourself by opening several browsers and clicking on the map to generate GPS
+                events. The events instantly appear on every connected client browser. This application will work on modern
+                browsers, tablets, and mobile devices.
+            </dd>
+            <dt>Why was it created?</dt>
+            <dd>
+                In an effort to learn about building real-time applications, I chose to re-create the
+                <a href="https://github.com/ncolomer/MapPush" target="_blank">MapPush</a> example (which was built using the
+                <a href="https://github.com/Atmosphere/atmosphere" target="_blank">Atmosphere</a> framework) using the
+                <a href="http://meteor.com" target="_blank">Meteor</a> framework.<br/><br/>
+                Learn more about building real-time applications on the Meteor <a href="http://docs.meteor.com/" target="_blank">documentation</a> page.
+                <blockquote>
+                    <p class="quote">Meteor is an ultra-simple environment for building modern websites. What once took weeks, even with the
+                        best tools, now takes hours with Meteor.
+                    </p>
+                </blockquote>
+            </dd>
+        </dl>
+        <dl class="dl-horizontal">
+            <h2>Instructions</h2>
+            <dt>Connect / Disconnect</dt>
+            <dd>Select <strong><i class="icon-resize-small"></i> Connect</strong> to receive and
+                transmit GPS events. Select <strong><i class="icon-ban-circle"></i> Disconnect</strong> to
+                stop receiving or transmitting GPS events.</dd>
+            <dt>Start / Stop / Interval</dt>
+            <dd>Select <strong><i class="icon-play"></i> Start</strong> to generate random GPS
+                events, but note, these random GPS events will not be transmitted unless you have previously
+                selected <strong><i class="icon-resize-small"></i> Connect</strong>. Select <strong><i class="icon-stop"></i> Stop</strong> to stop generating random GPS
+                events. Use the dropdown to change the interval frequency of the randomly generated GPS events.
+            </dd>
+            <dt>Statistics</dt>
+            <dd>Select <strong><i class="icon-info-sign"></i> Statistics</strong> to display the <strong>EPS</strong>
+                (events per second) and <strong>Total</strong> gps events received. These statistics appear at the
+                bottom right-hand side of the map.
+            </dd>
+            <dt>Troubleshooting</dt>
+            <dd>Only the GPS events that lie within the bounds of your geomap will appear. Therefore, if you are not
+                seeing any GPS events appear, try zooming out the map view.
+            </dd>
+        </dl>
+    </div>
+</div>
+</body>
+
+<template name="controls">
+    <div class="btn-toolbar">
+        <div id="btn-connection" class="btn-group">
+            <button type="button" id="btn-connection-connect" class="btn btn-small">
+                <i class="icon-resize-small"></i> Connect
+            </button>
+            <button type="button" id="btn-connection-disconnect" class="btn btn-small active">
+                <i class="icon-ban-circle"></i> Disconnect
+            </button>
+        </div>
+        <div class="buttonDiv">
+            <div id="btn-generation" class="btn-group">
+                <button type="button" id="btn-generation-start" class="btn btn-small">
+                    <i class="icon-play"></i> Start
+                </button>
+                <button type="button" id="btn-generation-stop" class="btn btn-small active">
+                    <i class="icon-stop"></i> Stop
+                </button>
+            </div>
+            <div id="intervalDiv">
+                <select id="interval">
+                    <option value="1000">1 sec interval</option>
+                    <option value="2000" selected>2 sec interval</option>
+                    <option value="3000">3 sec interval</option>
+                    <option value="4000">4 sec interval</option>
+                    <option value="5000">5 sec interval</option>
+                </select>
+            </div>
+        </div>
+        <div class="buttonDiv">
+            <button type="button" id="btn-stats" class="btn btn-small">
+                <i class="icon-info-sign"></i> Statistics
+            </button>
+        </div>
+    </div>
+</template>
