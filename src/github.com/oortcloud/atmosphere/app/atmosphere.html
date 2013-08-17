@@ -1,0 +1,205 @@
+<head>
+  <title>Atmosphere | Beer. Wings. Smart Packages.</title>
+  <link href='//fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+  <div class="pull-right">{{loginButtons align="right"}}</div>
+  <div class="container" role="main">
+    <div class="row">
+      <div class="span8 offset2">
+        {{> header}}
+        <div class="content">
+          {{> content}}
+        </div>
+      </div>
+    </div>
+  </div>
+  {{> bottomBar}}
+</body>
+
+<template name="header">
+  <div class="page-header">
+    <h1><a href="#">Atmosphere <small>Beer. Wings. Smart Packages</small></a></h1>
+  </div>
+</template>
+
+<template name="content">
+  <ul class="nav nav-tabs nav-main">
+    {{#constant}}
+      <li><input name="search" id="search" autocomplete="off" value="{{search_keywords}}" type="text" class="input-medium search-query" placeholder="Find a package..."></li>
+    {{/constant}}
+    <li class="{{isActiveTop "wtf"}} pull-right"><a class="nav-link" href="/wtf/app">WTF¿</a></li>
+    <li class="{{isActiveTop "package|packages"}} pull-right"><a class="nav-link" href="/">Packages</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active">
+      {{{renderPage}}}
+    </div>
+  </div>
+</template>
+
+<template name="not_found">
+  <span style="position: absolute; -webkit-transform: rotate(90deg);-moz-transform: -moz-transform: rotate(-90deg);-o-transform: rotate(-90deg);writing-mode: lr-tb;font-size: 25pt;margin-left: 10px;">:(</span>
+  <span style="margin-left: 40px;font-size: 11pt;"> what you're looking for is in deeper space. Head back to the <a href="/" atmosphere="">Atmosphere</a></span>
+  
+</template>
+
+<template name="dump">
+  {{#each packages}}
+    <pre>{{dump}}</pre>
+  {{/each}}
+</template>
+
+<template name="logs">
+  {{#each logs}}
+    {{#if this/stamp}}
+      <p>{{this/stamp}} {{this/name}}</p>
+    {{/if}}
+  {{/each}}
+</template>
+
+<template name="packages">
+  {{#if packagesLoading}}
+    <p>
+      <i class="icon-refresh"></i>
+      doing something smart...
+    </p>
+  {{else}}
+    {{#ifAny packages}}
+      <table class="packages table-striped">
+        <thead>
+          <tr>
+            <th>Smart Packages <span class="info">1 - {{packages.count}} of {{packages.count}}</span></th>
+            <th>Version</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each packages}}
+          <tr>
+            <td>
+                <dl class="package-title">
+                    <dt><a class="nav-link" href="/package/{{name}}">{{trunc name 80}}</a></dt>
+                    <dd>{{trunc description 75}}</dd>
+                </dl>
+            </td>
+            <td>
+                <dl class="version-title">
+                    <dt>v{{latest}}</dt>
+                    <dd>
+                        {{refreshEvery "15s"}}
+                        <span class="timeAgo"><nobr><span title="{{humanizeUpdatedAt}}">{{timeAgo}}</span></nobr></span>
+                    </dd>
+                </dl>
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    {{else}}
+      <p>add some packages. or don't.</p>
+    {{/ifAny}}
+  {{/if}}
+</template>
+
+<template name="meteoriteCallout">
+  <p class="alert alert-info">
+    Atmosphere's smart packages are installed and managed by the Meteorite command line tool. Visit <a href="http://oortcloud.github.com/meteorite">Meteorite's home page</a> to learn more.
+  </p>
+</template>
+
+<template name="package">
+  <a href="/" class="nav-link pull-right">« Back to packages</a>
+  {{#with package}}
+  {{#if ready}}
+    <h2>{{name}}</h2>
+    <dl>
+      <dt><p>Description</p></dt>
+      <dd><p>{{description}}</p></dd>
+      <dt><p>Homepage</p></dt>
+      <dd><p><a href="{{homepage}}">{{homepage}}</a></p></dd>
+      <dt>
+        <p>
+          Repository
+          {{#if github_data}}
+            <iframe src="http://ghbtns.com/github-btn.html?user={{github_data.repo_owner}}&repo={{github_data.repo_name}}&type=watch&count=true"
+  allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20" align="top"></iframe>
+          {{/if}}
+        </p>
+        </dt>
+      <dd><p><a href="{{git}}">{{git}}</a></p></dd>
+      <dt><p>Author</p></dt>
+      <dd>
+        <p>
+          {{#if author/url}}<a href="{{author/url}}">{{/if}}
+            {{author/name}}
+          {{#if author/url}}</a>{{/if}}
+        </p>
+      </dd>
+      <dt><p>Current version</p></dt>
+      <dd><p>v{{latest}}, last updated <span title="{{humanizeUpdatedAt}}">{{timeAgo}}</span></p></dd>
+      {{#if dependencies}}
+        <dt><p>Dependencies</p></dt>
+        <dd>
+          {{#each dependencies}}
+            <p>
+              <a href="/package/{{this}}">{{this}}</a>
+            </p>
+          {{/each}}
+        </dd>
+      {{/if}}
+      {{#if nonStandardMeteor}}
+        <dd>Note: This package relies on a non standard version of meteor. Be careful!</dd>
+      {{/if}}
+    </dl>
+    {{#if loadingreadme}}
+      <small><i class="icon-refresh"></i> Loading README.md</small>
+    {{else}}
+      {{#if readme}}
+        <hr/>
+        <div class="package-readme">
+        {{{readme}}}
+        </div>
+      {{else}}
+        {{#if github_hitlimit}}
+        <small>Hit github's api limit :/. Check back the repository for the readme</small>
+        {{else}}
+        <small>:( No README.md</small>
+        {{/if}}
+      {{/if}}
+    {{/if}}
+  {{else}}
+    <p>
+      <i class="icon-refresh"></i>
+      loading...
+    </p>
+  {{/if}}
+  {{/with}}
+</template>
+
+<template name="bottomBar">
+  <div class="bottom-bar">
+    <div class="bottombar-inner">
+      <ul class="nav">
+        <li><nobr>Built for the <a href="http://meteor.com">Meteor</a> community by the Meteor <a href="https://github.com/oortcloud/atmosphere/graphs/contributors">community</a></nobr></li>
+      </ul>
+    </div>
+  </div>
+</template>
+
+<head>
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-34025267-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+  </script>
+</head>
