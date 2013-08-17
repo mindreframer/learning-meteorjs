@@ -1,0 +1,19 @@
+<div id="outer" ng-controller="home">
+     <div class="leaderboard">
+        <div class="title">
+          Leaderboard
+        </div>
+        <div class="container">
+          <div class="player" ng-repeat="play in players | orderBy: name | orderBy: score" ng-class="sel($index)" ng-click="toggleSelect($index)">
+          	<span class="name">{{play.name}}</span>
+      		  <span class="score">{{play.score}}</span>
+      		  <span class="love" ng-click="addLove(play)">
+              <img src="img/fav.png" alt="Like" />
+            </span>
+          </div>
+        </div>
+        <div class="instruct">
+          Click on a heart to increase the score by 5 points
+        </div>
+     </div>
+</div>
