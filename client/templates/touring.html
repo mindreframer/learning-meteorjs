@@ -1,0 +1,115 @@
+<head>
+  <script type="text/javascript"
+    src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDEljhoD7LjZfNplwV2zAjx1onw6rMjj6o&sensor=false&libraries=geometry">
+  </script>
+
+  <title>touring</title>
+</head>
+
+<body>
+  {{> content}}
+</body>
+
+<template name="content">
+  {{#if has_trip}}
+  <div id='content'>
+    <div class='not_days'>
+      <button class='home btn'>All trips</button> 
+      <button class='danger btn btn-danger'>Destroy</button> 
+      {{> show_trip}}
+    </div>
+    {{> days}}
+    <div id='search'>
+      <input placeholder='Fort Lauderdale, FL' />
+      <button class='btn search-geocode'>Geocode</button>
+      <button class='btn search-places'>Places</button>
+    </div>
+  </div>
+  <div id="map_canvas" ></div>
+  {{else}}
+    {{> trips}}
+  {{/if}}
+</template>
+<template name="trips">
+  <div id='all_trips'>
+    <div class='hero-unit'>
+      <h1> Welcome! </h1>
+      <h2>Feel free to clone one of the trips listed below, </h2>
+      <p>or, you can start from scratch!</p>
+      <p> 
+      There is some obfuscation in lieu of authentication.
+      Just be aware that anybody you share your trips url with will have full editing privileges. 
+      Proper authentication is on the way.
+      </p>
+      <button id='new_trip' class='btn btn-large btn-primary'>New Trip</button>
+    </div>
+    {{#each trips}}
+      {{> trip_thumbnail}}
+    {{/each}}
+  </div>
+</template>
+
+<template name="trip_thumbnail">
+  <div class='trip_thumbnail'>
+    <h1>{{title}}</h1>
+    <div class='details'>
+      <span>{{#if num_days}}{{miles}} {{num_days}} days {{else}} Empty trip :-( {{/if}}</span>
+    </div>
+    <img src={{path}} >
+  </div>
+</template>
+
+<template name="show_trip">
+  <div class='show_trip' title='Double click to edit'>
+    <h1 class='editable title'>{{greeting}}</h1>
+    <ul class='help unstyled'>
+      {{#each messages}}
+      <li>{{this}}</li>
+      {{/each}}
+    </ul>
+  </div>
+</template>
+
+<template name="days">
+<div id='elevator' class='elevation' style='z-index:{{zIndex}};'> </div>
+<div class='travel' style='top:{{directions}};' >
+  {{#each travelMode}}
+    <img id='{{this}}' class='mode {{selected}}' src='/{{this}}.png'>
+  {{/each}}
+  <button class='exit btn btn-info'>Done</button>
+</div>
+<div>
+  <div class="days">
+    {{#each days}}
+      {{> day}}
+    {{/each}}
+  </div>
+</div>
+</template>
+
+<template name="day">
+<div class="day{{current}}" id={{_id}}>
+  <span class="wrap destroy_wrap">
+    <span class="destroy"></span>
+  </span>
+  <span class="order"> {{order}}</span>
+  <span class="distance"> {{miles}}</span>
+  <span title='Double click to edit' class="stop editable"> {{stop_or_address}} </span>
+  <span class="wrap insert_wrap"> 
+    <span class="insert"></span>
+  </span>
+  <span class="wrap directions_wrap">
+    <span class="directions"></span>
+  </span>
+</div>
+</template>
+
+<template name="waypoint">
+  <div class='waypoint'>
+    {{short_loc}}
+  </div>
+</template>
+<template name="day_details">
+  <div class='day_details'>
+  </div>
+</template>
