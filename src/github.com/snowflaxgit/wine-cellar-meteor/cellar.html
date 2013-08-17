@@ -5,13 +5,12 @@
 <link rel="stylesheet" href="css/jquery-ui.min.css" />
   <link rel="stylesheet" href="css/dialog.css" />
    <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
-   <script type="text/javascript" src="js/jquery-ui-1.9.2.custom.min.js"></script>  
+   <script type="text/javascript" src="js/jquery-ui-1.9.2.custom.min.js"></script>
 
 </head>
 
 <body>
   {{> hello}}
-  
 </body>
 
 <template name="hello">
@@ -22,38 +21,28 @@
        		<a class="add" href="#/addwine">Add Wine</a>
        	</div>
     </div>
-  		
+
   </div>
   <div class="wine-main">
-  	 
-      {{> container}}
-    
+    {{> container}}
   </div>
-  
-</template>
 
-<!--<template name="main">
-	<div class="wine-container">
-    	<div class="wine-info">
-        	<img src="file:///C|/Users/snowflax/Desktop/Krunal Shah/Meteor/task/images/argiano.jpg" >
-         </div>  
-    </div>
-</template>-->
+</template>
 
 <template name="container">
   <div class="wine-row">
   	<div class="content">
-    	<ul class="wine-small">       	
+    	<ul class="wine-small">
          	{{#each wines}}
             	{{> wine}}
-                
-   			{{/each}}               	    
+
+   			{{/each}}
          </ul>
          {{> wineDetail}}
     </div>
    <!-- <div class="pagination pagination-centered"><ul><li class="active"><a href="javascript:void(0);"></a></li></ul></div>-->
   </div>
-  
+
 </template>
 
 <template name="wine">
@@ -70,8 +59,8 @@
             </p>
        	</div>
     </a>
-</li>   
-      
+</li>
+
 </template>
 
 <template name="wineDetail">
@@ -86,7 +75,7 @@
                         	<label class="info-label"> Id: </label>
                             <div class="info-input">
                             	<input class="input-id" id="input-id" disabled="" value="" name="{{_id}}">
-                            </div> 
+                            </div>
                         </div>
                         <div class="info">
                         	<label class="info-label">Name:</label>
@@ -130,7 +119,7 @@
                             <div class="info-input">
                             	<textarea id="input-note" class="input-note" rows="6" name="note" width="450px"></textarea>
                             </div>
-                        </div>                        
+                        </div>
                   	</div>
                 	<div class="picture">
                     	<div class="picture-info">
@@ -167,7 +156,7 @@
         <a name="" href="javascript:void(0);" class="button-no">No</a>
     </div>
 </div>-->
- 
 
- 
+
+
 </template>

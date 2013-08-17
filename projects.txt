@@ -34,3 +34,4 @@ https://github.com/awatson1978/forms-kitchen-sink.git
 https://github.com/grigio/meteor-geohash.git
 https://github.com/gabrielhpugliese/meteor_supercalendar.git
 https://github.com/BeDifferential/lister.git
+https://github.com/oortcloud/atmosphere.git
